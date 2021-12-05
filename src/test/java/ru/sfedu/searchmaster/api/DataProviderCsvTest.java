@@ -120,6 +120,5 @@ class DataProviderCsvTest {
     void createScheduleFail() {
         Rating rating = dataProviderCsv.searchRatingById(3).get();
         Assertions.assertEquals(false, instance.createSchedule("Manikure", 12, 20, "29.10.2021", "16:52:07", false, rating).getData());
-
     }
 }
