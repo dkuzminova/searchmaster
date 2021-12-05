@@ -1,0 +1,8 @@
+"CUSTOMERACCOUNT","DATE","ID","MARKING","MASTERACCOUNT","NEEDRATE","TIME","TYPEOFSERVICE"
+"[1]","Sun Feb 15 00:00:00 GMT+03:00 1970","1","[1]","[2]","true","22:48:36","Manikur"
+"[2]","Fri Feb 28 00:00:00 GMT+03:00 1958","2","[1]","[2]","false","16:41:40","Manikur"
+"[1]","Sat Feb 11 00:00:00 GMT+03:00 2017","3","[1]","[2]","true","08:08:04","Manikur"
+"[2]","29.10.2021","4","[3]","[2]","false","16:52:07","Manikure"
+"[1]","Mon Mar 23 12:43:32 GMT+03:00 2020","5","[0]","[2]","false","22:43:32","Manikure"
+"[2]","29.10.2021","6","[3]","[2]","false","16:52:07","Manikure"
+"[1]","Mon Mar 23 12:43:32 GMT+03:00 2020","7","[0]","[2]","false","22:43:32","Manikure"
