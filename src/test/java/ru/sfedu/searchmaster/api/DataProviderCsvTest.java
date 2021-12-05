@@ -114,6 +114,7 @@ class DataProviderCsvTest {
     void createScheduleSuccess() {
         Rating rating = dataProviderCsv.searchRatingById(3).get();
         Assertions.assertEquals(true, instance.createSchedule("Manikure", 2, 2, "29.10.2021", "16:52:07", false, rating).getData());
+
     }
 
     @Test
