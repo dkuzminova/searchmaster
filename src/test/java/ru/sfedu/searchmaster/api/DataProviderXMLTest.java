@@ -1,7 +1,5 @@
 package ru.sfedu.searchmaster.api;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
@@ -13,16 +11,14 @@ import ru.sfedu.searchmaster.utils.CsvGenerator;
 
 import java.util.List;
 
-class DataProviderCsvTest {
+class DataProviderXMLTest {
 
-    public static DataProvider instance = new DataProviderCsv();
-    public static DataProviderCsv dataProviderCsv = new DataProviderCsv();
-    public static DataProviderXML dataProviderXml = new DataProviderXML();
-    public static final Logger log = LogManager.getLogger(DataProviderCsvTest.class);
+    public static DataProvider instance = new DataProviderXML();
+    public static DataProviderXML dataProviderXML = new DataProviderXML();
 
     @BeforeAll
     static void setCSVEnv() {
-        CsvGenerator.addRecord(dataProviderCsv);
+        CsvGenerator.addRecord(dataProviderXML);
     }
 
     @Test
@@ -71,7 +67,7 @@ class DataProviderCsvTest {
 
     @Test
     void rateMasterSuccess() {
-        Assertions.assertEquals(true, instance.rateMaster(2, EnumRating.NORMAL).getData());
+        Assertions.assertEquals(true, instance.rateMaster(3, EnumRating.NORMAL).getData());
     }
 
     @Test
@@ -91,7 +87,7 @@ class DataProviderCsvTest {
 
     @Test
     void createWorkspaceSuccess() {
-        Assertions.assertEquals(true, instance.createWorkPlace("Milchacova 10", true, dataProviderCsv.searchMasterAccountById(1).get()).getData());
+        Assertions.assertEquals(true, instance.createWorkPlace("Milchacova 10", true, dataProviderXML.searchMasterAccountById(1).get()).getData());
     }
 
     @Test
@@ -106,20 +102,20 @@ class DataProviderCsvTest {
 
     @Test
     void setMasterFail() {
-        WorkPlace workPlace = dataProviderCsv.searchWorkPlaceById(3).get();
-        MasterAccount masterAccount = dataProviderCsv.searchMasterAccountById(3).get();
+        WorkPlace workPlace = dataProviderXML.searchWorkPlaceById(3).get();
+        MasterAccount masterAccount = dataProviderXML.searchMasterAccountById(3).get();
         Assertions.assertNotEquals(false, instance.setMaster(workPlace, masterAccount).getData());
     }
 
     @Test
     void createScheduleSuccess() {
-        Rating rating = dataProviderCsv.searchRatingById(3).get();
+        Rating rating = dataProviderXML.searchRatingById(3).get();
         Assertions.assertEquals(true, instance.createSchedule("Manikure", 2, 2, "29.10.2021", "16:52:07", false, rating).getData());
     }
 
     @Test
     void createScheduleFail() {
-        Rating rating = dataProviderCsv.searchRatingById(3).get();
+        Rating rating = dataProviderXML.searchRatingById(3).get();
         Assertions.assertEquals(false, instance.createSchedule("Manikure", 12, 20, "29.10.2021", "16:52:07", false, rating).getData());
 
     }

@@ -18,5 +18,13 @@ public class Constants {
     public static final String SHEDULES_CSV = "ru.sfedu.searchmaster.csv.shedules";
     public static final String WORKPLACE_CSV = "ru.sfedu.searchmaster.csv.workplace";
 
+    public static final String ACCOUNT_XML = "ru.sfedu.searchmaster.xml.account";
+    public static final String CUSTOMER_ACCOUNT_XML = "ru.sfedu.searchmaster.xml.customer_account";
+    public static final String MASTER_ACCOUNT_XML = "ru.sfedu.searchmaster.xml.master_account";
+    public static final String RATING_XML = "ru.sfedu.searchmaster.xml.rating";
+    public static final String SHEDULE_XML = "ru.sfedu.searchmaster.xml.shedule";
+    public static final String SHEDULES_XML = "ru.sfedu.searchmaster.xml.shedules";
+    public static final String WORKPLACE_XML = "ru.sfedu.searchmaster.xml.workplace";
+
     public static final String ID_NOT_EXISTS = "Object[%d] is not exists";
 }

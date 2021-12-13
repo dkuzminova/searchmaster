@@ -5,12 +5,11 @@ import com.opencsv.bean.CsvBindByName;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
 import ru.sfedu.searchmaster.models.enums.District;
-import ru.sfedu.searchmaster.models.enums.EnumRating;
 
 import java.util.Objects;
 
 
-@Root(name = "CustomerAccount")
+@Root(name = "customeraccount")
 public class CustomerAccount extends Account {
     @Element
     @CsvBindByName
@@ -18,10 +17,6 @@ public class CustomerAccount extends Account {
 
     public CustomerAccount() {
 
-    }
-
-    public CustomerAccount(District district) {
-        this.district = district;
     }
 
     public District getDistrict() {

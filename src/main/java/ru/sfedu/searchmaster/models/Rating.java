@@ -16,8 +16,10 @@ public class Rating implements Serializable {
     @Attribute
     @CsvBindByName
     private long id;
+    @Element
     @CsvBindByName
     private long masterId;
+    @Element
     @CsvBindByName
     private long customerId;
     @Element

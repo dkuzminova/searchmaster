@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.Objects;
 
 
-@Root(name = "Account")
+@Root(name = "account")
 public class Account implements Serializable {
     @Attribute
     @CsvBindByName
@@ -39,6 +39,17 @@ public class Account implements Serializable {
     private EnumRating rating;
 
     public Account() {
+    }
+
+    public Account(long userId, String name, String surname, String birthday, String city, String phoneNumber, Boolean masterAccount, EnumRating rating) {
+        this.userId = userId;
+        this.name = name;
+        this.surname = surname;
+        this.birthday = birthday;
+        this.city = city;
+        this.phoneNumber = phoneNumber;
+        this.masterAccount = masterAccount;
+        this.rating = rating;
     }
 
     public long getUserId() {

@@ -1,5 +1,6 @@
 package ru.sfedu.searchmaster.utils;
 
+import ru.sfedu.searchmaster.api.DataProvider;
 import ru.sfedu.searchmaster.api.DataProviderCsv;
 import ru.sfedu.searchmaster.models.*;
 import ru.sfedu.searchmaster.models.enums.District;
@@ -11,7 +12,7 @@ import java.util.List;
 public class CsvGenerator {
     public static DataProviderCsv instance = new DataProviderCsv();
 
-    public static void addRecord() {
+    public static void addRecord(DataProvider dataProvider) {
 
         for (int i = 1; i <= 3; i++) {
             Account account = new Account();
@@ -23,7 +24,7 @@ public class CsvGenerator {
             account.setCity(DataForTests.city[i - 1]);
             account.setPhoneNumber(DataForTests.phone[i - 1]);
             account.setRating(EnumRating.ZERO);
-            instance.insertAccount(account);
+            dataProvider.insertAccount(account);
         }
         for (int i = 1; i <= 3; i++) {
             CustomerAccount customerAccount = new CustomerAccount();
@@ -35,7 +36,8 @@ public class CsvGenerator {
             customerAccount.setCity(DataForTests.city[i - 1]);
             customerAccount.setPhoneNumber(DataForTests.phone[i - 1]);
             customerAccount.setRating(EnumRating.ZERO);
-            instance.insertCustomerAccount(customerAccount);
+            customerAccount.setDistrict(District.CENTER);
+            dataProvider.insertCustomerAccount(customerAccount);
         }
         for (int i = 1; i <= 3; i++) {
             MasterAccount masterAccount = new MasterAccount();
@@ -50,63 +52,63 @@ public class CsvGenerator {
             masterAccount.setWorkArea((i < 2) ? "Manikur" : "Pedicure");
             masterAccount.setInstagram("instagramm");
             masterAccount.setWorkExperience(i);
-            instance.insertMasterAccount(masterAccount);
+            dataProvider.insertMasterAccount(masterAccount);
         }
         for (int i = 1; i <= 3; i++) {
             Rating rating = new Rating(i, i, i, EnumRating.PERFECT, EnumRating.PERFECT);
-            instance.insertRating(rating);
+            dataProvider.insertRating(rating);
         }
         for (int i = 1; i <= 3; i++) {
             Shedules shedules = new Shedules();
             shedules.setId(i);
             shedules.setDate(instance.between().toString());
             shedules.setTime( instance.getTime().toString());
-            shedules.setMasterAccount(getMasterAccount());
-            instance.insertShedules(shedules);
+            shedules.setMasterAccount(getMasterAccount(dataProvider));
+            dataProvider.insertShedules(shedules);
         }
         for (int i = 1; i <= 3; i++) {
             Shedule shedule = new Shedule();
             shedule.setId(i);
             shedule.setDate(instance.between().toString());
             shedule.setTime( instance.getTime().toString());
-            shedule.setMasterAccount(getMasterAccount());
+            shedule.setMasterAccount(getMasterAccount(dataProvider));
             shedule.setTypeOfService("Manikur");
-            shedule.setCustomerAccount(getCustomerAccount());
+            shedule.setCustomerAccount(getCustomerAccount(dataProvider));
             shedule.setNeedRate(DataForTests.isMaster[i - 1]);
-            shedule.setMarking(getRating());
-            instance.insertShedule(shedule);
+            shedule.setMarking(getRating(dataProvider));
+            dataProvider.insertShedule(shedule);
         }
         for (int i = 1; i <= 3; i++) {
-            WorkPlace workPlace = new WorkPlace(i,"Custom address",getMasterAccounts());
-            instance.insertWorkPlace(workPlace);
+            WorkPlace workPlace = new WorkPlace(i,"Custom address",getMasterAccounts(dataProvider));
+            dataProvider.insertWorkPlace(workPlace);
         }
     }
 
-    public static List<MasterAccount> getMasterAccounts() {
+    public static List<MasterAccount> getMasterAccounts(DataProvider dataProvider) {
         List<MasterAccount> masterAccountList = new ArrayList<>();
         int max = 2;
         int min = 1;
         for (int i = 1; i <= 2; i++) {
-            masterAccountList.add(instance.searchMasterAccountById(((int) ((Math.random() * ((max - min) + 1)) + min))).get());
+            masterAccountList.add(dataProvider.searchMasterAccountById(((int) ((Math.random() * ((max - min) + 1)) + min))).get());
         }
         return masterAccountList;
     }
 
-    public static MasterAccount getMasterAccount() {
+    public static MasterAccount getMasterAccount(DataProvider dataProvider) {
         int max = 2;
         int min = 1;
-        return instance.searchMasterAccountById(((int) ((Math.random() * ((max - min) + 1)) + min))).get();
+        return dataProvider.searchMasterAccountById(((int) ((Math.random() * ((max - min) + 1)) + min))).get();
     }
 
-    public static CustomerAccount getCustomerAccount() {
+    public static CustomerAccount getCustomerAccount(DataProvider dataProvider) {
         int max = 2;
         int min = 1;
-        return instance.searchCustomerAccountById(((int) ((Math.random() * ((max - min) + 1)) + min))).get();
+        return dataProvider.searchCustomerAccountById(((int) ((Math.random() * ((max - min) + 1)) + min))).get();
     }
 
-    public static Rating getRating() {
+    public static Rating getRating(DataProvider dataProvider) {
         int max = 2;
         int min = 1;
-        return instance.searchRatingById(((int) ((Math.random() * ((max - min) + 1)) + min))).get();
+        return dataProvider.searchRatingById(((int) ((Math.random() * ((max - min) + 1)) + min))).get();
     }
 }

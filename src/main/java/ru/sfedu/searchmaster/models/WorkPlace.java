@@ -5,6 +5,7 @@ import com.opencsv.bean.CsvBindByName;
 import com.opencsv.bean.CsvCustomBindByName;
 import org.simpleframework.xml.Attribute;
 import org.simpleframework.xml.Element;
+import org.simpleframework.xml.ElementList;
 import org.simpleframework.xml.Root;
 import ru.sfedu.searchmaster.utils.MasterAccountListConverter;
 
@@ -17,7 +18,7 @@ public class WorkPlace implements Serializable {
     @Attribute
     @CsvBindByName
     private long placeId;
-    @Element
+    @ElementList
     @CsvCustomBindByName(converter = MasterAccountListConverter.class)
     private List<MasterAccount> masterAccount;
     @Element

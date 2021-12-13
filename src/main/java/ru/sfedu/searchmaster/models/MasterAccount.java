@@ -4,7 +4,6 @@ package ru.sfedu.searchmaster.models;
 import com.opencsv.bean.CsvBindByName;
 import org.simpleframework.xml.Element;
 import org.simpleframework.xml.Root;
-import ru.sfedu.searchmaster.models.enums.EnumRating;
 
 import java.util.Objects;
 
